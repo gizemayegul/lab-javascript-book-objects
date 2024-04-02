@@ -130,10 +130,12 @@ function booksByAuthor(dictionary) {
 
   for (author in dictionary) {
     const authorBooks = dictionary[author];
+    // console.log(authorBooks);
 
     authorBooks.forEach((item) => {
       const title = item[0];
       const pages = item[1];
+      // console.log(item[0]);
 
       const newBook = {
         title: title,
@@ -148,32 +150,47 @@ function booksByAuthor(dictionary) {
   return result;
 }
 //!Another solution
-// function booksByAuthor(dictionary) {
-//   // Your code here:
-//   let newObj = [];
-//   console.log(dictionary);
-//   for (let key in dictionary) {
-//     // console.log(key);
-//     // console.log(dictionary[key][0][0], "title");
-//     // console.log(dictionary[key][0][1], "page");
-//     // console.log(dictionary[key][1][0], "title");
-//     // console.log(dictionary[key][1][1], "page");
-//     for (let i = 0; i < dictionary[key].length; i++) {
-//       newObj.push({
-//         title: dictionary[key][i][0],
-//         pages: dictionary[key][i][1],
-//         author: key,
-//       });
-//     }
-//   }
-//   return newObj;
-// }
+function booksByAuthor(dictionary) {
+  // Your code here:
+  let newObj = [];
+  // console.log(dictionary);
+  for (let key in dictionary) {
+    // console.log(dictionary[key]);
+    // console.log(dictionary[key][0][0], "title");
+    // console.log(dictionary[key][0][1], "page");
+    // console.log(dictionary[key][1][0], "title");
+    // console.log(dictionary[key][1][1], "page");
+    for (let i = 0; i < dictionary[key].length; i++) {
+      newObj.push({
+        title: dictionary[key][i][0],
+        pages: dictionary[key][i][1],
+        author: key,
+      });
+    }
+  }
+  return newObj;
+}
 
 // Bonus: Iteration 6 | Average Page Count
 function averagePageCount(booksArray) {
   // Your code here:
   let sum = 0;
   booksArray.forEach((e) => (sum += e.pages));
-  console.log(sum);
+  // console.log(sum);
   return sum / booksArray.length;
 }
+
+//!Another solution with for loop
+
+// function averagePageCount(books) {
+//   let totalPages = 0;
+
+//   console.log("books", books);
+
+//   for (let i = 0; i < books.length; i++) {
+//     totalPages += books[i].pages;
+//   }
+
+//   const averagePages = totalPages / books.length;
+//   return averagePages;
+// }
